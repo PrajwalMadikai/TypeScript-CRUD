@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "lib": ["ESNext"],      /* use this line for using import and require */
+    "target": "es2016",  
+    "module": "CommonJS",        /* Required for Node.js */
+    "moduleResolution": "node",  /* Ensures proper resolution of modules */
+    "esModuleInterop": true,     /* Allows default imports from commonjs modules */
+    "strict": true,
+    "skipLibCheck": true,        /* Optional: Skip type checking of declaration files */
+    "skipDefaultLibCheck": true, /* Optional: Skip checking default lib */
+    "rootDir": "./src",          /* Root directory for source files */
+    "outDir": "./dist"           /* Compiled output directory */
+  },
+  "include": ["src/**/*.ts"],   /* Include all TypeScript files in src */
+  "exclude": ["node_modules"]   /* Exclude node_modules */
+}
