@@ -1,16 +1,19 @@
 {
   "compilerOptions": {
-    "lib": ["ESNext"],      /* use this line for using import and require */
-    "target": "es2016",  
-    "module": "CommonJS",        /* Required for Node.js */
-    "moduleResolution": "node",  /* Ensures proper resolution of modules */
-    "esModuleInterop": true,     /* Allows default imports from commonjs modules */
-    "strict": true,
-    "skipLibCheck": true,        /* Optional: Skip type checking of declaration files */
-    "skipDefaultLibCheck": true, /* Optional: Skip checking default lib */
-    "rootDir": "./src",          /* Root directory for source files */
-    "outDir": "./dist"           /* Compiled output directory */
+    "rootDir": "./src",  // Set this to 'src' to prevent src from being mirrored in dist
+    "typeRoots": ["./node_modules/@types", "src/types"], 
+    "lib": ["ESNext"], 
+    "target": "ES6", 
+    "module": "CommonJS", 
+    "baseUrl": "./src", 
+    "moduleResolution": "node", 
+    "esModuleInterop": true, 
+    "strict": true, 
+    "skipLibCheck": true, 
+    "skipDefaultLibCheck": true, 
+    "outDir": "./dist", 
+    "allowSyntheticDefaultImports": true 
   },
-  "include": ["src/**/*.ts"],   /* Include all TypeScript files in src */
-  "exclude": ["node_modules"]   /* Exclude node_modules */
+  "include": ["src/**/*.ts", "src/types"],  // Ensure all src files and types are included
+  "exclude": ["node_modules"] 
 }

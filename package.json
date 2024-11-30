@@ -6,20 +6,29 @@
   "type": "commonjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx tsc && node dist/index.js"
+    "start": "npx tsc && nodemon dist/index.js"
+     
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/mongoose": "^5.11.97",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "express": "^4.21.1",
     "express-session": "^1.18.1",
     "method-override": "^3.0.0",
+    "mongoose": "^8.8.3",
+    "nocache": "^4.0.0",
+    "nodemon": "^3.1.7",
     "path": "^0.12.7"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
     "@types/express": "^5.0.0",
+    "@types/express-session": "^1.18.1",
     "@types/node": "^22.10.1",
     "@types/typescript": "^2.0.0",
     "typescript": "^5.7.2"
