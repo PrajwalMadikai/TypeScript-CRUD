@@ -12,6 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.editUser = void 0;
 const studentModal_1 = __importDefault(require("../modal/studentModal"));
 const getLogin = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -47,4 +48,35 @@ const dashboard = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         console.log(error);
     }
 });
-exports.default = { getLogin, LoginPost, dashboard };
+const editUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const userId = req.params.id;
+        const { name, email } = req.body;
+        // Find the student by ID and update the name and email
+        const user = yield studentModal_1.default.findByIdAndUpdate(userId, { name, email }, { new: true });
+        if (!user) {
+            res.status(404).json({ message: 'User not found' });
+        }
+        res.status(200).json({ message: 'User updated successfully', user });
+    }
+    catch (error) {
+        console.error('Error updating user:', error);
+        res.status(500).json({ message: 'An error occurred while updating the user' });
+    }
+});
+exports.editUser = editUser;
+const deleteUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const userId = req.params.id;
+        const user = yield studentModal_1.default.findByIdAndDelete(userId);
+        if (!user) {
+            res.status(404).json({ message: 'User not found' });
+        }
+        res.status(200).json({ message: 'User deleted successfully' });
+    }
+    catch (error) {
+        console.error('Error deleting user:', error);
+        res.status(500).json({ message: 'An error occurred while deleting the user' });
+    }
+});
+exports.default = { getLogin, LoginPost, dashboard, editUser: exports.editUser, deleteUser };

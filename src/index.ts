@@ -1,10 +1,12 @@
 import express from 'express';
 import session from 'express-session';
+import methodOverride from 'method-override'; // Import method-override
 import nocache from 'nocache';
 import path from 'path';
 import connectDB from './server/config/connectDB';
 import adminRoute from './server/route/admin';
 import userRoute from './server/route/user';
+
 const app = express();
 
 require('dotenv').config();
@@ -25,6 +27,8 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
+ 
+app.use(methodOverride('_method'));
 
 app.use('/', userRoute);
 app.use('/admin', adminRoute);

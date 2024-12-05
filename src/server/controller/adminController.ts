@@ -41,5 +41,43 @@ const dashboard = async (req: Request, res: Response) => {
     }
   };
   
- 
-export default{ getLogin,LoginPost,dashboard }
+  export const editUser = async (req: Request, res: Response): Promise<void> => {
+    try {
+      const userId = req.params.id;
+      const { name, email } = req.body;
+  
+      // Find the student by ID and update the name and email
+      const user = await Student.findByIdAndUpdate(
+        userId,
+        { name, email },
+        { new: true }
+      );
+  
+      if (!user) {
+          res.status(404).json({ message: 'User not found' });
+      }
+  
+      res.status(200).json({ message: 'User updated successfully', user });
+    } catch (error) {
+      console.error('Error updating user:', error);
+      res.status(500).json({ message: 'An error occurred while updating the user' });
+    }
+  };
+  const deleteUser = async (req: Request, res: Response): Promise<void> => {
+    try {
+      const userId = req.params.id;
+  
+      const user = await Student.findByIdAndDelete(userId);
+  
+      if (!user) {
+          res.status(404).json({ message: 'User not found' });
+      }
+  
+      res.status(200).json({ message: 'User deleted successfully' });
+    } catch (error) {
+      console.error('Error deleting user:', error);
+      res.status(500).json({ message: 'An error occurred while deleting the user' });
+    }
+  };
+
+export default{ getLogin,LoginPost,dashboard ,editUser,deleteUser}

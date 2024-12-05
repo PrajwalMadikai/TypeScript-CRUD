@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const express_session_1 = __importDefault(require("express-session"));
+const method_override_1 = __importDefault(require("method-override")); // Import method-override
 const nocache_1 = __importDefault(require("nocache"));
 const path_1 = __importDefault(require("path"));
 const connectDB_1 = __importDefault(require("./server/config/connectDB"));
@@ -24,6 +25,7 @@ app.use((0, express_session_1.default)({
     resave: false,
     saveUninitialized: false
 }));
+app.use((0, method_override_1.default)('_method'));
 app.use('/', user_1.default);
 app.use('/admin', admin_1.default);
 app.listen(port, () => { console.log(`http://localhost:${port}`); });

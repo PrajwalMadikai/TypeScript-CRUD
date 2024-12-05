@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "type": "commonjs",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx tsc && nodemon dist/index.js"
-     
-  },
+"scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "start": "npx tsc && nodemon dist/index.js",
+  "build": "npx tsc && ncp ./views ./dist/views",
+  "postbuild": "ncp ./views ./dist/views"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -29,8 +30,10 @@
     "@types/bcryptjs": "^2.4.6",
     "@types/express": "^5.0.0",
     "@types/express-session": "^1.18.1",
+    "@types/method-override": "^0.0.35",
     "@types/node": "^22.10.1",
     "@types/typescript": "^2.0.0",
+    "ncp": "^2.0.0",
     "typescript": "^5.7.2"
   }
 }
